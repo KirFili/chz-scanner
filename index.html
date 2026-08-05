@@ -43,10 +43,10 @@
   .ver { color: var(--muted); font-size: 13px; }
   .dl {
     display: flex;
-    gap: 14px;
-    align-items: stretch;
-    margin: 22px 0 6px;
+    gap: 16px;
+    align-items: center;
   }
+  .dl-card h2 { margin-bottom: 14px; }
   .btn {
     flex: 1;
     display: flex;
@@ -75,7 +75,7 @@
     justify-content: center;
   }
   .qr img { width: 110px; height: 110px; display: block; }
-  .dl-note { text-align: center; color: var(--muted); font-size: 12px; margin-bottom: 22px; }
+  .dl-note { color: var(--muted); font-size: 14px; line-height: 1.5; }
   .card {
     background: var(--card);
     border: 1px solid var(--outline);
@@ -132,19 +132,26 @@
     <div class="ver">Версия 1.1 · 05.08.2026 · Android 8.0+</div>
   </div>
 
-  <div class="dl">
+  <div class="card dl-card">
+    <h2>Установка со смартфона</h2>
     <a class="btn" href="https://github.com/KirFili/chz-scanner/releases/latest/download/chz-scanner.apk">
       ⬇ Скачать приложение (APK)
       <small>~19 МБ · вне Google Play</small>
     </a>
-    <div class="qr"><img src="qr-download.png" alt="QR-код для скачивания"></div>
   </div>
-  <div class="dl-note">Откройте страницу на компьютере и наведите камеру телефона на QR-код — скачивание начнётся сразу</div>
+
+  <div class="card dl-card">
+    <h2>Установка с компьютера</h2>
+    <div class="dl">
+      <div class="qr"><img src="qr-download.png" alt="QR-код для скачивания"></div>
+      <div class="dl-note">Отсканируйте смартфоном QR-код для скачивания приложения</div>
+    </div>
+  </div>
 
   <div class="card">
     <h2>Инструкция по установке приложения</h2>
     <ul class="steps">
-      <li>Нажмите <b>«Скачать приложение»</b> или отсканируйте QR-код</li>
+      <li>Скачайте приложение: со смартфона — по кнопке <b>«Скачать приложение»</b>, с компьютера — отсканируйте смартфоном <b>QR-код</b></li>
       <li>Откройте скачанный файл <b>chz-scanner.apk</b></li>
       <li>Если телефон спросит — разрешите <b>установку из этого источника</b></li>
       <li>Нажмите <b>«Установить»</b> и откройте приложение</li>
