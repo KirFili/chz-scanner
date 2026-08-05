@@ -4,16 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Сканер «Честный Знак» — Маркон</title>
+<title>Сканер «Честный Знак» — Stardogs</title>
 <style>
   :root {
-    --bg: #0f1420;
-    --card: #1a2233;
-    --accent: #4f8cff;
-    --accent-press: #3a6fd8;
-    --text: #e8ecf4;
-    --muted: #9aa5b8;
-    --ok: #4caf7d;
+    --bg: #0E0E1A;          /* BrandNavy */
+    --card: #1E1E2A;        /* BrandNavySurface */
+    --outline: #2A2735;     /* BrandNavyOutline */
+    --accent: #DF9023;      /* BrandAmber */
+    --accent-light: #FFB95A;
+    --accent-dark: #A9690F;
+    --yellow: #FFC733;
+    --red: #AD0618;
+    --text: #FBFBF9;        /* BrandOffWhite */
+    --muted: #BBB9C0;       /* BrandGray */
+    --ok: #7BC97E;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -27,44 +31,59 @@
     padding: 24px 16px 40px;
   }
   .wrap { width: 100%; max-width: 480px; }
-  .hero {
-    text-align: center;
-    padding: 32px 0 24px;
-  }
+  .hero { text-align: center; padding: 16px 0 20px; }
   .logo {
-    width: 88px; height: 88px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, #4f8cff, #2c5cc5);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 44px;
-    margin: 0 auto 20px;
-    box-shadow: 0 8px 32px rgba(79,140,255,.35);
+    width: 120px;
+    margin: 0 auto 16px;
+    display: block;
+    filter: drop-shadow(0 6px 24px rgba(255,199,51,.25));
   }
   h1 { font-size: 26px; margin-bottom: 6px; }
   .sub { color: var(--muted); font-size: 15px; margin-bottom: 4px; }
   .ver { color: var(--muted); font-size: 13px; }
+  .dl {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    margin: 22px 0 6px;
+  }
   .btn {
-    display: block;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
     background: var(--accent);
-    color: #fff;
+    color: #1c1200;
     text-decoration: none;
     text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 16px;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 12px;
     border-radius: 14px;
-    margin: 24px 0 8px;
     transition: background .15s;
   }
-  .btn:active { background: var(--accent-press); }
-  .btn-note { text-align: center; color: var(--muted); font-size: 12px; margin-bottom: 24px; }
+  .btn:active { background: var(--accent-dark); color: #fff; }
+  .btn small { font-weight: 400; font-size: 12px; opacity: .75; }
+  .qr {
+    background: #fff;
+    border-radius: 14px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .qr img { width: 110px; height: 110px; display: block; }
+  .dl-note { text-align: center; color: var(--muted); font-size: 12px; margin-bottom: 22px; }
   .card {
     background: var(--card);
+    border: 1px solid var(--outline);
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 16px;
   }
-  .card h2 { font-size: 16px; margin-bottom: 12px; }
+  .card h2 { font-size: 16px; margin-bottom: 12px; color: var(--yellow); }
   .card ul { list-style: none; }
   .card li {
     padding: 6px 0 6px 28px;
@@ -72,73 +91,84 @@
     font-size: 14px;
     color: var(--muted);
   }
-  .card li::before {
+  .card li b { color: var(--text); font-weight: 600; }
+  .feat li::before {
     content: "✓";
     position: absolute; left: 4px;
     color: var(--ok);
     font-weight: 700;
   }
   .steps { counter-reset: step; }
-  .steps li {
-    counter-increment: step;
-    padding-left: 36px;
-  }
+  .steps li { counter-increment: step; padding-left: 36px; padding-top: 8px; padding-bottom: 8px; }
   .steps li::before {
     content: counter(step);
-    color: #fff;
+    color: #1c1200;
     background: var(--accent);
-    width: 20px; height: 20px;
+    width: 22px; height: 22px;
     border-radius: 50%;
     font-size: 12px; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    left: 0; top: 7px;
+    position: absolute; left: 0; top: 9px;
   }
+  .hint {
+    background: rgba(255,199,51,.08);
+    border: 1px solid rgba(255,199,51,.25);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .hint b { color: var(--yellow); }
   footer { color: var(--muted); font-size: 12px; text-align: center; margin-top: 16px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="hero">
-    <div class="logo">📦</div>
+    <img class="logo" src="stardogs-logo.png" alt="Stardogs">
     <h1>Сканер «Честный Знак»</h1>
     <div class="sub">Приёмка маркированного товара по УПД</div>
     <div class="ver">Версия 1.1 · 05.08.2026 · Android 8.0+</div>
   </div>
 
-  <a class="btn" href="https://github.com/KirFili/chz-scanner/releases/latest/download/chz-scanner.apk">⬇ Скачать приложение (APK)</a>
-  <div class="btn-note">~19 МБ · установка вне Google Play</div>
+  <div class="dl">
+    <a class="btn" href="https://github.com/KirFili/chz-scanner/releases/latest/download/chz-scanner.apk">
+      ⬇ Скачать приложение (APK)
+      <small>~19 МБ · вне Google Play</small>
+    </a>
+    <div class="qr"><img src="qr-download.png" alt="QR-код для скачивания"></div>
+  </div>
+  <div class="dl-note">Откройте страницу на компьютере и наведите камеру телефона на QR-код — скачивание начнётся сразу</div>
+
+  <div class="card">
+    <h2>Инструкция по установке приложения</h2>
+    <ul class="steps">
+      <li>Нажмите <b>«Скачать приложение»</b> или отсканируйте QR-код</li>
+      <li>Откройте скачанный файл <b>chz-scanner.apk</b></li>
+      <li>Если телефон спросит — разрешите <b>установку из этого источника</b></li>
+      <li>Нажмите <b>«Установить»</b> и откройте приложение</li>
+      <li>Введите <b>номер телефона</b> в формате <b>79251240615</b></li>
+      <li>Введите <b>код активации</b> (4 цифры) — запросите его по телефону у представителя компании (логиста)</li>
+      <li>Готово — приложение настроится автоматически и можно начинать сканирование</li>
+    </ul>
+    <div class="hint"><b>Нет кода активации?</b> Код выдаёт логист компании — один код действует для одной установки приложения.</div>
+  </div>
 
   <div class="card">
     <h2>Возможности</h2>
-    <ul>
+    <ul class="feat">
       <li>Сканирование GS1 DataMatrix и штрихкодов упаковок</li>
       <li>Контроль приёмки по плану УПД: план/факт по каждой позиции</li>
       <li>Замена нечитаемого штрихкода упаковки кодом единицы товара</li>
       <li>Фотофиксация каждого отсканированного кода</li>
       <li>Автоматическая отправка результатов в 1С и специалисту ЧЗ</li>
       <li>Справочники SKU и УПД обновляются автоматически</li>
+      <li>Автообновление приложения до актуальной версии</li>
     </ul>
   </div>
 
-  <div class="card">
-    <h2>Установка</h2>
-    <ul class="steps">
-      <li>Нажмите «Скачать приложение» выше</li>
-      <li>Откройте скачанный файл chz-scanner.apk</li>
-      <li>Разрешите установку из этого источника, если телефон спросит</li>
-      <li>Нажмите «Установить» и откройте приложение</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Подключение</h2>
-    <ul>
-      <li>Настройки почты выдаёт администратор</li>
-      <li>По вопросам подключения обратитесь к администратору приложения</li>
-    </ul>
-  </div>
-
-  <footer>© Маркон, 2026</footer>
+  <footer>© Stardogs · Маркон, 2026</footer>
 </div>
 </body>
 </html>
