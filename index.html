@@ -20,6 +20,24 @@
     --ok: #7BC97E;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  .admin-link {
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 7px 12px;
+    border: 1px solid var(--outline);
+    border-radius: 10px;
+    background: var(--card);
+    transition: color .15s, border-color .15s;
+    z-index: 10;
+  }
+  .admin-link:hover { color: var(--accent-light); border-color: var(--accent-dark); }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
@@ -124,6 +142,7 @@
 </style>
 </head>
 <body>
+<a class="admin-link" href="https://chz.mkservice360.ru/admin">⚙ Админка</a>
 <div class="wrap">
   <div class="hero">
     <img class="logo" src="stardogs-logo.png" alt="Stardogs">
